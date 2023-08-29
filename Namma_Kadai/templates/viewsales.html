@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sale.css') }}">
+    <title>Document</title>
+</head>
+<body><div class="background-image"></div>
+    <div class="navi"><nav class="navMenu">
+        <a href="/index">Home</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Purchase</a>
+            <div class="dropdown-content">
+                <a href="/purchase" id="balanceValue1">Add</a>
+                <a href="/viewpurchase" id="balanceValue1">View</a>
+               
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Sales</a>
+            <div class="dropdown-content">
+                <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="/balance" class="dropbtn">Balance</a>
+            
+        </div>
+        <a href="/newitem">Item</a>
+        <a href="/logout">Logout</a>
+      
+    </nav>
+</div>
+    <div class="wapper" style="padding-bottom: 100px;">
+        
+        {%if sales %}
+        <h2>Sales report  :</h2>
+        <div class="keyboard" style="padding-bottom: 60px;">
+        <table>
+            <thead>
+            <tr>
+                <th style="padding-right: 10px;">Sales_ID</th>
+                <th style="padding-right: 10px;">Timestamp</th>
+                <th style="padding-right: 10px;">Item_id</th>
+                <th style="padding-right: 10px;">Item_name</th>
+                <th style="padding-right: 10px;">Quantity</th>
+                <th style="padding-right: 10px;width:100px;">Rate</th>
+                <th style="padding-right: 10px;width:100px;">Amount</th>
+            </tr>
+        </thead>
+            {% for sale in sales %}
+            <tr>
+                <td style="padding-top: 15px;">{{ sale[0] }}</td>
+                <td style="padding-top: 15px;">{{ sale[1] }}</td>
+                <td style="padding-top: 15px;">{{ sale[2] }}</td>
+                <td style="padding-top: 15px;">{{ sale[3] }}</td>
+                <td style="padding-top: 15px;">{{ sale[4] }}</td>
+                <td style="padding-top: 15px;text-align: right;">{{ sale[5] }}</td>
+                <td style="padding-top: 15px;text-align: right;font-weight: bold;">{{ sale[6] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+        {%else%}
+            <h2>No sales are available</h2>
+        {%endif%}
+    </div>
+</body>
+</html>

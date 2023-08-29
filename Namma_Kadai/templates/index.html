@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">	
+</head>
+<body> <div class="background-image"></div>   
+    <div class="navi">
+    <nav class="navMenu">
+        <a href="/index">Home</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Purchase</a>
+            <div class="dropdown-content">
+                <a href="/purchase" id="balanceValue1">Add</a>
+                <a href="/viewpurchase" id="balanceValue1">View</a>
+               
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Sales</a>
+            <div class="dropdown-content">
+                <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="/balance" class="dropbtn">Balance</a>
+            
+        </div>
+        <a href="/newitem">Item</a>
+        <a href="/logout">Logout</a>
+      
+    </nav>
+
+</div>    
+{{msg}}
+<div class="comp">
+<h2 >{{company_name}}</h2><br><br>
+            
+</div>    
+</body>
+</html>

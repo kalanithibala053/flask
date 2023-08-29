@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='purchase.css') }}">
+</head>
+<body><div class="background-image"></div>
+    <div class="navi">
+    <nav class="navMenu">
+        <a href="/index">Home</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Purchase</a>
+            <div class="dropdown-content">
+                <a href="/purchase" id="balanceValue1">Add</a>
+                <a href="/viewpurchase" id="balanceValue1">View</a>
+               
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Sales</a>
+            <div class="dropdown-content">
+                <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="/balance" class="dropbtn">Balance</a>
+            
+        </div>
+        <a href="/newitem">Item</a>
+        <a href="/logout">Logout</a>
+      
+    </nav></div>
+<br><br>
+    
+    <div class="wapper" style="margin-bottom: 90px;">
+        {% if purchase %}
+        <h2>Purchase report:</h2>
+        <div class="keyboard" style="width:900px;padding-bottom: 100px;">
+    <table><thead>
+        <tr>
+            <th style="padding-right: 10px;">Purchase_ID</th>
+            <th style="padding-right: 10px;">Timestamp</th>
+            <th style="padding-right: 10px;">Item_id</th>
+            <th style="padding-right: 10px;">Item_Name</th>
+            <th style="padding-right: 10px;">Quantity</th>
+            <th style="padding-right: 10px;width:110px;">Rate</th>
+            <th style="padding-right: 10px;padding-right: 20px;margin-right: 40px;width:110px;">Total</th>
+        </tr>
+    </thead>
+        {% for purchas in purchase %}
+        <tr>
+            <td style="padding-top: 15px;">{{ purchas[0] }}</td>
+            <td style="padding-top: 15px;">{{ purchas[1] }}</td>
+            <td style="padding-top: 15px;">{{ purchas[2] }}</td>
+            <td style="padding-top: 15px;">{{ purchas[3] }}</td>
+            <td style="padding-top: 15px;">{{ purchas[4] }}</td>
+            <td style="padding-top: 15px;text-align: right;">{{ purchas[5] }}</td>
+            <td style="padding-top: 15px;text-align: right;font-weight: bold">{{ purchas[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    {%else%}
+        <h2>No purchase are available</h2>
+    {%endif%}
+</div>
+
+</body>
+</html>

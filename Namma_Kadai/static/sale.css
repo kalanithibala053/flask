@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+     
+    font-family: Arial, sans-serif;
+    /* Prevents scroll bars */
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/wall1.jpg');
+    background-size: cover; /* Adjusts the image to cover the entire container */
+    background-attachment: fixed; /* Ensures the image is fixed */
+    background-repeat: no-repeat; /* Prevents image from repeating */
+    z-index: -1; /* Puts the image behind other content */
+}
+
+
+.navMenu {
+    background-color: transparent;
+    position: absolute;
+    top:2%;
+    left: 45%;
+    width:900px;
+    position:fixed;
+  }
+  
+  .navMenu a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding-right: 50px;
+    text-transform: uppercase;
+    
+    display: inline-block;
+    font-weight: bold;
+   
+  }
+  
+  .navMenu a:hover {
+    color: #007bff;
+  }
+  /* Add your other styles here */
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+   
+  }
+    
+  
+  .dropdown-content a{
+    padding-bottom: 10px;
+    padding-left: 10px;
+  } 
+  .dropdown:hover .dropdown-content {
+    display: block;
+    padding-top: 10px;
+  }
+  .dropdown:hover .dropdown-content #balanceValue1{
+    border-bottom: black;
+  }
+  
+  .login-container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 100px auto;
+      
+      padding: 20px;
+      width: 400px;
+      height:auto
+  }
+  
+  .login-title{
+      margin-top: 50px;
+      margin-right: 40px;
+  }
+  input[type="text"],
+  input[type="password"] {
+      width: 300px;
+      padding: 10px;
+      margin: 5px 30px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      
+  }
+  input{
+      width: 300px;
+      padding: 10px;
+      margin: 5px 30px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      
+  }
+  select{
+    width: 300px;
+    padding: 10px;
+    margin: 5px 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    
+  }
+  .but{
+      margin-top: 100px;
+      margin-left: 150px;
+      width:200px;
+  }
+  
+  .butt{
+      margin-top: auto;
+      margin-left: auto;
+      width:200px;
+  }
+  
+  button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+  }
+  .wapper{
+    margin-top: 100px;
+    margin-left:500px;
+    display: block;
+    width: 1000px;
+    height:auto;
+    background: #fff;
+    
+    padding: 10px 17px;
+    -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+  }
+  
+  table thead{
+    background: #c9dff0;
+    height:40px;
+    margin-right: 40px;
+   margin-bottom: 50px;
+   padding-bottom: 10px;
+  }
+  table thead th{
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 10px;
+  }
+  .keyboard{
+    margin-left: 80px;
+    width:900px;
+  }
+  table tr{
+    text-indent: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  th{
+    margin-right: 10px;
+  }
+  .cash{
+    text-indent: 10px;
+    margin-top: 10px;
+    font-size: 0.6em;
+  }
+.navi{
+  position:fixed;
+    width:100%;
+    height:50px;
+    top:0%;
+    background-color:#d2d6e1  ;
+    
+    -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+}

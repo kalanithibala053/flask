@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='item.css') }}">
+    
+    
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="navi">
+    <nav class="navMenu">
+        <a href="/index">Home</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Purchase</a>
+            <div class="dropdown-content">
+                <a href="/purchase" id="balanceValue1">Add</a>
+                <a href="/viewpurchase" id="balanceValue1">View</a>
+               
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Sales</a>
+            <div class="dropdown-content">
+                <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="/balance" class="dropbtn">Balance</a>
+            
+        </div>
+        <a href="/newitem">Item</a>
+        <a href="/logout">Logout</a>
+      
+    </nav>
+</div>
+    <div class="wapper"> 
+        
+        
+        {% if item %}
+        <h2 style="text-indent: 30px;">Item View :</h2><br><br>
+        <div class="keyboard">
+        <table>
+            <thead>
+            <tr>
+                
+                <th>Item_Name</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr></thead>
+            {% for view in item %}
+            <tr>
+                <form method="post" action="/itemdelete">
+                    <td style="text-indent: 15px;">{{view[0]}}<input type="hidden" name="item" value="{{ view[0] }}"readonly></td>
+                    <td style="text-indent: 15px;">{{ view[1] }}</td>
+                    <td><div class="but1"><button type="submit">Remove</button></div></td>
+                </form>
+                
+            </tr>
+            {% endfor %}
+            {%else%}
+            <h2>No items are available</h2>
+        {%endif%}</table>  </div>
+        <table>
+            <form action="/newitem" method="POST">
+                <td rowspan="3"><input type="text" name="itemname" placeholder="itemname" /></td>
+                <td></td>
+                <td><div class="but1">
+                <button type="submit" style="width:90px">Feed</button></div></td>
+            </form>
+            </table>
+      
+
+        
+        {% if itemrepo %}
+        <h2 style="text-indent: 30px;">Item Report:</h2><br><br>
+       
+           
+     <div class="keyboard" style="width:900px;padding-bottom: 100px;padding-left: 50px;">
+        <table><thead>
+            <tr>
+                <th style="padding-right: 10px;">From_ID</th>
+                <th style="padding-right: 10px;">Timestamp</th>
+                <th style="padding-right: 10px;">Item_id</th>
+                
+                <th style="padding-right: 10px;">Quantity</th>
+            </tr>
+        </thead>
+        {% for item1 in itemrepo %}
+            <tr class="row">                        
+                <td style="padding-top: 15px;"> {{item1[0]}}</td>
+                <td style="padding-top: 15px;">{{item1[1]}}</td>
+                <td style="padding-top: 15px;"id="row_{{ loop.index }}">{{item1[2]}}</td>
+                <td style="padding-top: 15px;">{{item1[3]}}</td>
+            </tr>
+            <script>
+                var Id = '{{ item1[0] }}'; 
+                var firstLetter = Id.charAt(0); 
+                var trElement = document.getElementById('row_{{ loop.index }}');
+                
+                if (firstLetter === 'P') {
+                    trElement.style.color = '#CD001A';
+                } else if (firstLetter === 'S') {
+                    trElement.style.color = '#006E33';
+                }else if (firstLetter === 'C') {
+                    trElement.style.color = ' #00B5E2';
+                }
+                 else {
+                    trElement.style.color = 'black';
+                }
+            </script>
+           
+            {% endfor %}
+        </table>
+        {%else%}
+    <h2>No items report are available</h2>
+     {%endif%}
+    </div>
+    </div>
+    
+</body>
+</html>

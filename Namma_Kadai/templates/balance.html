@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='balance.css') }}">	
+   
+</head>
+<body>   <div class="background-image"></div>  
+    <div class="navi"></div>
+                <nav class="navMenu">
+                    <a href="/index">Home</a>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn">Purchase</a>
+                        <div class="dropdown-content">
+                            <a href="/purchase" id="balanceValue1">Add</a>
+                            <a href="/viewpurchase" id="balanceValue1">View</a>
+                           
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn">Sales</a>
+                        <div class="dropdown-content">
+                            <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                            <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="/balance" class="dropbtn">Balance</a>
+                        
+                    </div>
+                    
+                    <a href="/newitem">Item</a>
+                        
+                    
+                    <a href="/logout">Logout</a>
+                  
+                </nav>
+            <div class="wapper" style="padding-bottom: 100px;margin-top:80px;">   
+                <h2 style="text-indent: 30px;">Current Account Balance is {{balance}}</h2>
+            
+            
+                {% if cash_history %}
+                <h2 style="text-indent: 30px;padding-left:50px;">Account report:</h2>
+                <div class="keyboard" style="padding-bottom: 60px;">
+            <table ><thead class="thead">
+                <tr>
+                    <th  style="padding-right: 10px;">From_ID</th>
+                    <th  style="padding-right: 10px;">Timestamp</th>
+                    <th  style="padding-right: 10px;">Action</th>
+                    <th  style="padding-right: 10px;">Current_Balance</th>
+                    
+                </tr></thead>
+                {% for cash in cash_history %}
+                <tr >
+                    <td style="padding-top: 15px;padding-right: 10px;">{{ cash[0] }}</td>
+                    <td style="padding-top: 15px;padding-right: 10px;">{{ cash[1] }}</td>
+                    <td id="row_{{ loop.index }}" style="padding-top: 15px;padding-right: 10px;font-weight: bold;text-align: right;">{{ cash[2] }}</td>
+                    <td style="padding-top: 15px;padding-right: 10px;text-align: right;">{{ cash[3] }}</td>
+                </tr>
+                <script>
+                    var Id = '{{ cash[0] }}'; 
+                    var firstLetter = Id.charAt(0); 
+                    var trElement = document.getElementById('row_{{ loop.index }}');
+                    
+                    if (firstLetter === 'P') {
+                        trElement.style.color = '#CD001A';
+                    } else if (firstLetter === 'S') {
+                        trElement.style.color = '#006E33';
+                    } else {
+                        trElement.style.color = 'black';
+                    }
+                </script>
+                {% endfor %}
+            </table>
+        </div>
+            {%else%}
+                <h2>No Accounts are available</h2>
+            {%endif%}
+            <h2 style="text-indent: 20px;padding-right:50px;">Increase cash balance</h2><br>
+            <form action="/cash" method="POST">
+                <td colspan="2" style="padding-left:50px;margin-left: 10px;"><input type="number" name="cash" placeholder="cash" /></td>
+                
+                <td><button type="submit" style="width:90px">Feed</button></td>
+            </form>
+    </div>    
+</body>
+</html>

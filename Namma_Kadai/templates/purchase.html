@@ -1,0 +1,70 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> purchase </title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='purchase.css') }}">	
+		
+	</head>
+	<body><div class="background-image"></div>
+		 <div class="navi">
+		<nav class="navMenu">
+			<a href="/index">Home</a>
+			
+			<div class="dropdown">
+				<a href="#" class="dropbtn">Purchase</a>
+				<div class="dropdown-content">
+					<a href="/purchase" id="balanceValue1">Add</a>
+					<a href="/viewpurchase" id="balanceValue1">View</a>
+				   
+				</div>
+			</div>
+			<div class="dropdown">
+				<a href="#" class="dropbtn">Sales</a>
+				<div class="dropdown-content">
+					<a href="/sales" class="showItems" id="balanceValue">Add</a>
+					<a href="/viewsales" class="showItems" id="balanceValue">View</a>
+					
+				</div>
+			</div>
+			<div class="dropdown">
+				<a href="/balance" class="dropbtn">Balance</a>
+				
+			</div>
+			<a href="/newitem">Item</a>
+			<a href="/logout">Logout</a>
+		  
+		</nav>
+	</div>
+<br><br>
+
+			<div class="login-container"><br>
+				<h2 style="text-indent: 30px;padding-top: 20px;padding-left: 10px;">Purchase</h2><br><br>
+				
+				<form action="/purchase" method="post">
+                    <select name="item">
+                        {% for item in items %}
+                        <option value="{{ item[1] }}">{{ item[1] }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    <input type="number" name="qty" placeholder="Quantity" required min="1"><br><br>
+                    <input type="number" step="0.01" name="rate" placeholder="Rate" required min="0"><br><br>
+					<div class="but">
+                    <button type="submit">Save</button>
+					</div>
+
+
+					
+                    <br>
+                    
+                </form>
+				<h2 style="text-indent: 80px;font-size: 15px;">{{msg}}</h2><br><br>
+			</div>
+
+			
+			
+
+		
+	</body>
+</html>
+

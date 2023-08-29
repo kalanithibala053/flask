@@ -1,0 +1,78 @@
+<!-- Store this code in 'sales.html' file inside the 'templates' folder -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sales</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='sale.css') }}">
+    <script>
+        function checkinput() {
+            var rateInput = document.getElementById("rate");
+        var errorMessage = document.getElementById("error-message");
+
+        if (rateInput.value < 1) {
+            errorMessage.innerHTML = "Enter a greater number";
+        } else {
+            errorMessage.innerHTML = "";
+        }
+
+        }</script>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="navi">
+    <nav class="navMenu">
+        <a href="/index">Home</a>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Purchase</a>
+            <div class="dropdown-content">
+                <a href="/purchase" id="balanceValue1">Add</a>
+                <a href="/viewpurchase" id="balanceValue1">View</a>
+               
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Sales</a>
+            <div class="dropdown-content">
+                <a href="/sales" class="showItems" id="balanceValue">Add</a>
+                <a href="/viewsales" class="showItems" id="balanceValue">View</a>
+                
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="/balance" class="dropbtn">Balance</a>
+            
+        </div>
+        <a href="/newitem">Item</a>
+        <a href="/logout">Logout</a>
+      
+    </nav>
+</div>
+
+   
+            <div class="login-container"><br>
+				<h2 style="text-indent: 30px;">Sales</h2><br><br>
+            
+            <form action="/sales" method="post" id="myform">
+                <select name="item" id="selectitem">
+                    
+                    {% for item in items %}
+                    <option value="{{ item[1] }}">{{ item[1] }}</option>
+                    {% endfor %}
+                    
+                </select><br><br>
+                <input type="number" name="qty" placeholder="Quantity" required min="1" id="rate" oninput="checkinput()"><br><br>
+                <input type="number" step="0.01" id="rate" name="rate" placeholder="Rate" required min="1" oninput="checkinput()"><br><br>
+               
+                <div class="but">
+                   
+                <button type="submit">feed</button></div>
+            </form>
+            <h2 style="text-indent: 40px;font-size: 15px;">{{msg}}</h2><br><br>
+            
+           
+</body>
+</html>
